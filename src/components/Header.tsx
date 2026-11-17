@@ -31,16 +31,16 @@ export const Header: React.FC<HeaderProps> = ({
   const t = translations[lang];
 
   return (
-    <header className="sticky top-0 z-40 bg-[#0c0d0e]/95 backdrop-blur-md border-b border-[#242832]">
+    <header className="sticky top-0 z-40 bg-[#0c0d0e]/95 backdrop-blur-md border-b border-[#242832] w-full max-w-[100vw] overflow-x-hidden">
       {/* Top Banner Notice */}
-      <div className="bg-[#14161a] border-b border-[#242832] text-zinc-400 text-xs py-1.5 px-3 sm:px-4 font-medium flex items-center justify-between">
-        <div className="flex items-center gap-2 mx-auto sm:mx-0">
-          <Flame className="w-3.5 h-3.5 text-amber-500" />
-          <span className="text-zinc-300 text-[11px] sm:text-xs truncate max-w-[280px] sm:max-w-none">
+      <div className="bg-[#14161a] border-b border-[#242832] text-zinc-400 text-xs py-1.5 px-3 sm:px-4 font-medium flex items-center justify-between w-full overflow-hidden">
+        <div className="flex items-center gap-2 min-w-0 flex-1">
+          <Flame className="w-3.5 h-3.5 text-amber-500 flex-shrink-0" />
+          <span className="text-zinc-300 text-[11px] sm:text-xs truncate block min-w-0">
             {t.badge} • {config.slogan}
           </span>
         </div>
-        <div className="hidden sm:flex items-center gap-4 text-zinc-400">
+        <div className="hidden sm:flex items-center gap-4 text-zinc-400 flex-shrink-0 ml-3">
           <button
             type="button"
             onClick={onOpenApkModal}
@@ -65,11 +65,11 @@ export const Header: React.FC<HeaderProps> = ({
       </div>
 
       {/* Main Header */}
-      <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 py-2.5 sm:py-3.5">
-        <div className="flex items-center justify-between gap-2 sm:gap-4">
+      <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 py-2 sm:py-3 w-full">
+        <div className="flex items-center justify-between gap-2 w-full">
           {/* Logo & Brand Identity */}
-          <Link href="/" className="flex items-center gap-2.5 sm:gap-3 group flex-shrink-0">
-            <div className="relative w-10 h-10 sm:w-13 sm:h-13 rounded-full overflow-hidden border border-amber-600/60 shadow-md flex-shrink-0 bg-black">
+          <Link href="/" className="flex items-center gap-2 sm:gap-3 group min-w-0 flex-1 sm:flex-initial">
+            <div className="relative w-9 h-9 sm:w-11 sm:h-11 rounded-full overflow-hidden border border-amber-600/60 shadow-md flex-shrink-0 bg-black">
               <Image
                 src={config.logo || '/logo.jpeg'}
                 alt={config.name}
@@ -78,21 +78,21 @@ export const Header: React.FC<HeaderProps> = ({
                 priority
               />
             </div>
-            <div>
-              <h1 className="font-extrabold text-sm sm:text-lg text-white tracking-tight group-hover:text-amber-400 transition-colors leading-tight">
+            <div className="min-w-0 flex-1">
+              <h1 className="font-extrabold text-xs sm:text-base md:text-lg text-white tracking-tight group-hover:text-amber-400 transition-colors leading-tight truncate">
                 {config.name}
               </h1>
-              <div className="flex items-center gap-1.5 sm:gap-2 mt-0.5">
+              <div className="flex items-center gap-1.5 mt-0.5">
                 <span
-                  className={`inline-block w-2 h-2 rounded-full ${
+                  className={`inline-block w-2 h-2 rounded-full flex-shrink-0 ${
                     config.isOpen ? 'bg-emerald-500' : 'bg-red-500'
                   }`}
                 />
-                <span className="text-[11px] sm:text-xs text-zinc-400 font-medium">
+                <span className="text-[10px] sm:text-xs text-zinc-400 font-medium whitespace-nowrap">
                   {config.isOpen ? t.openNow : t.closedNow}
                 </span>
-                <span className="text-xs text-zinc-600">•</span>
-                <span className="text-[11px] sm:text-xs text-amber-500 font-medium hidden xs:inline">
+                <span className="text-xs text-zinc-600 hidden xs:inline">•</span>
+                <span className="text-[10px] sm:text-xs text-amber-500 font-medium hidden xs:inline truncate">
                   {config.city}
                 </span>
               </div>
@@ -100,7 +100,7 @@ export const Header: React.FC<HeaderProps> = ({
           </Link>
 
           {/* Search Box on Desktop */}
-          <div className="hidden md:flex flex-1 max-w-md mx-4 lg:mx-6">
+          <div className="hidden md:flex flex-1 max-w-md mx-3 lg:mx-6 min-w-0">
             <div className="relative w-full">
               <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-zinc-500" />
               <input
@@ -114,16 +114,16 @@ export const Header: React.FC<HeaderProps> = ({
           </div>
 
           {/* Actions & Language Switcher */}
-          <div className="flex items-center gap-1.5 sm:gap-2.5">
+          <div className="flex items-center gap-1.5 sm:gap-2 flex-shrink-0">
             {/* APK Button for Mobile & Desktop */}
             <button
               type="button"
               onClick={onOpenApkModal}
-              className="flex items-center gap-1 bg-[#1a1d24] hover:bg-[#222630] border border-amber-600/40 text-amber-400 font-bold px-2.5 py-1.5 sm:py-2 rounded-lg text-xs transition-colors shadow-sm"
+              className="flex items-center gap-1 bg-[#1a1d24] hover:bg-[#222630] border border-amber-600/40 text-amber-400 font-bold px-2 py-1.5 sm:px-2.5 sm:py-2 rounded-lg text-xs transition-colors shadow-sm"
               title="Baixar App APK Android"
             >
               <Smartphone className="w-3.5 h-3.5" />
-              <span className="hidden sm:inline">App APK</span>
+              <span className="hidden md:inline">App APK</span>
             </button>
 
             {/* Zesto Menu Direct Link */}
@@ -131,7 +131,7 @@ export const Header: React.FC<HeaderProps> = ({
               href="https://pedido.zesto.menu/pt-BR/store/churrasco-colombia/xulufimrsmrkvjmvk"
               target="_blank"
               rel="noopener noreferrer"
-              className="hidden md:flex items-center gap-1.5 bg-[#181a20] hover:bg-[#20232a] border border-[#2b303c] text-zinc-300 hover:text-white px-2.5 py-1.5 sm:py-2 rounded-lg text-xs font-semibold transition-colors"
+              className="hidden lg:flex items-center gap-1.5 bg-[#181a20] hover:bg-[#20232a] border border-[#2b303c] text-zinc-300 hover:text-white px-2.5 py-2 rounded-lg text-xs font-semibold transition-colors"
               title="Acessar Zesto Menu Online"
             >
               <ExternalLink className="w-3.5 h-3.5 text-amber-500" />
@@ -139,11 +139,11 @@ export const Header: React.FC<HeaderProps> = ({
             </a>
 
             {/* Segmented Language Switcher */}
-            <div className="flex items-center bg-[#16181d] rounded-lg p-0.5 border border-[#2a2e38]">
+            <div className="flex items-center bg-[#16181d] rounded-lg p-0.5 border border-[#2a2e38] flex-shrink-0">
               <button
                 type="button"
                 onClick={() => onLanguageChange('es')}
-                className={`px-2 py-1 rounded text-xs font-bold transition-all ${
+                className={`px-1.5 sm:px-2 py-1 rounded text-xs font-bold transition-all ${
                   lang === 'es'
                     ? 'bg-amber-600 text-white shadow-sm'
                     : 'text-zinc-400 hover:text-white'
@@ -155,7 +155,7 @@ export const Header: React.FC<HeaderProps> = ({
               <button
                 type="button"
                 onClick={() => onLanguageChange('pt')}
-                className={`px-2 py-1 rounded text-xs font-bold transition-all ${
+                className={`px-1.5 sm:px-2 py-1 rounded text-xs font-bold transition-all ${
                   lang === 'pt'
                     ? 'bg-amber-600 text-white shadow-sm'
                     : 'text-zinc-400 hover:text-white'
@@ -173,7 +173,7 @@ export const Header: React.FC<HeaderProps> = ({
               )}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="hidden lg:flex items-center gap-1.5 bg-emerald-600 hover:bg-emerald-500 text-white px-3 py-2 rounded-lg text-xs font-bold transition-colors"
+              className="hidden xl:flex items-center gap-1.5 bg-emerald-600 hover:bg-emerald-500 text-white px-3 py-2 rounded-lg text-xs font-bold transition-colors"
             >
               <Phone className="w-3.5 h-3.5" />
               <span>WhatsApp</span>
@@ -183,7 +183,8 @@ export const Header: React.FC<HeaderProps> = ({
             <button
               type="button"
               onClick={onOpenCart}
-              className="relative flex items-center gap-1.5 sm:gap-2 bg-amber-600 hover:bg-amber-500 text-white font-bold px-2.5 sm:px-3.5 py-1.5 sm:py-2 rounded-lg transition-colors"
+              className="relative flex items-center gap-1.5 bg-amber-600 hover:bg-amber-500 text-white font-bold p-2 sm:px-3 sm:py-2 rounded-lg transition-colors flex-shrink-0 shadow-sm"
+              title={t.cartTitle}
             >
               <ShoppingBag className="w-4 h-4" />
               <span className="hidden sm:inline text-xs">{t.cartTitle}</span>
@@ -197,9 +198,9 @@ export const Header: React.FC<HeaderProps> = ({
         </div>
 
         {/* Mobile Search Bar */}
-        <div className="mt-2.5 md:hidden">
+        <div className="mt-2 md:hidden w-full">
           <div className="relative w-full">
-            <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-3.5 h-3.5 text-zinc-500" />
+            <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-3.5 h-3.5 text-zinc-500" />
             <input
               type="text"
               value={searchTerm}
