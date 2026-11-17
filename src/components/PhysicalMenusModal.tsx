@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import Image from 'next/image';
 import { X, ExternalLink, FileText } from 'lucide-react';
 import { Language } from '@/lib/i18n';
+import { getAssetUrl } from '@/lib/assets';
 
 interface PhysicalMenusModalProps {
   isOpen: boolean;
@@ -98,7 +99,7 @@ export const PhysicalMenusModal: React.FC<PhysicalMenusModalProps> = ({
         <div className="flex-1 overflow-auto p-3 sm:p-6 bg-[#0a0b0d] flex flex-col items-center justify-center">
           <div className="relative w-full max-w-lg aspect-[3/4] sm:aspect-[4/5] rounded-xl overflow-hidden border border-[#242832] bg-black shadow-lg">
             <Image
-              src={currentMenu.src}
+              src={getAssetUrl(currentMenu.src)}
               alt={currentMenu.title}
               fill
               className="object-contain"
@@ -108,7 +109,7 @@ export const PhysicalMenusModal: React.FC<PhysicalMenusModalProps> = ({
 
           <div className="mt-3 flex items-center gap-3">
             <a
-              href={currentMenu.src}
+              href={getAssetUrl(currentMenu.src)}
               target="_blank"
               rel="noreferrer"
               className="inline-flex items-center gap-1.5 bg-[#1a1d24] hover:bg-[#242832] text-zinc-200 border border-[#2e3442] px-3.5 py-1.5 rounded-lg text-xs font-semibold transition-colors"

@@ -24,6 +24,7 @@ import { AppStoreData, Product, Category, BusinessConfig, SeoConfig, Order } fro
 import { initialStoreData } from '@/data/initialStore';
 import { Language, translations } from '@/lib/i18n';
 import { sanitizeString, sanitizeNumber } from '@/lib/security';
+import { getAssetUrl } from '@/lib/assets';
 
 export default function AdminPage() {
   const [store, setStore] = useState<AppStoreData>(initialStoreData);
@@ -198,7 +199,7 @@ export default function AdminPage() {
           <div className="h-5 w-px bg-[#242832] hidden sm:block" />
           <div className="flex items-center gap-2">
             <div className="relative w-8 h-8 rounded-full overflow-hidden border border-[#363c4a] bg-black">
-              <Image src={store.config.logo || '/logo.jpeg'} alt="Logo" fill className="object-cover" />
+              <Image src={getAssetUrl(store.config.logo || '/logo.jpeg')} alt="Logo" fill className="object-cover" />
             </div>
             <div>
               <h1 className="font-bold text-sm text-white">{store.config.name}</h1>
@@ -546,7 +547,7 @@ export default function AdminPage() {
                 >
                   <div className="relative w-16 h-16 rounded-lg overflow-hidden bg-[#121418] flex-shrink-0">
                     {p.image ? (
-                      <Image src={p.image} alt={p.name} fill className="object-cover" />
+                      <Image src={getAssetUrl(p.image)} alt={p.name} fill className="object-cover" />
                     ) : (
                       <Flame className="w-5 h-5 m-auto text-amber-500" />
                     )}

@@ -6,6 +6,7 @@ import { X, Plus, Minus, Check, Flame } from 'lucide-react';
 import { Product, BusinessConfig, CartItem } from '@/types';
 import { Language, translations } from '@/lib/i18n';
 import { sanitizeString } from '@/lib/security';
+import { getAssetUrl } from '@/lib/assets';
 
 interface ProductModalProps {
   product: Product | null;
@@ -93,7 +94,7 @@ export const ProductModal: React.FC<ProductModalProps> = ({
         <div className="relative h-40 sm:h-52 w-full bg-[#0d0e11] flex-shrink-0">
           {product.image ? (
             <Image
-              src={product.image}
+              src={getAssetUrl(product.image)}
               alt={product.name}
               fill
               className="object-cover"

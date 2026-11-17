@@ -3,6 +3,7 @@
 import React from 'react';
 import { X, Download, Smartphone, CheckCircle, ShieldCheck, ExternalLink } from 'lucide-react';
 import { Language, translations } from '@/lib/i18n';
+import { getAssetUrl } from '@/lib/assets';
 
 interface ApkModalProps {
   isOpen: boolean;
@@ -66,7 +67,7 @@ export const ApkModal: React.FC<ApkModalProps> = ({ isOpen, onClose, lang }) => 
 
         {/* Download Action Button */}
         <a
-          href="/churrasco-colombia.apk"
+          href={getAssetUrl('/churrasco-colombia.apk')}
           download="churrasco-colombia.apk"
           className="w-full flex items-center justify-center gap-2 bg-gradient-to-r from-amber-600 to-amber-500 hover:from-amber-500 hover:to-amber-400 text-white font-extrabold py-3 px-4 rounded-xl text-xs sm:text-sm transition-all shadow-md active:scale-95"
         >
@@ -82,7 +83,7 @@ export const ApkModal: React.FC<ApkModalProps> = ({ isOpen, onClose, lang }) => 
           </div>
           <div className="flex items-center gap-1.5 text-zinc-400">
             <a
-              href="/menu1.jpeg"
+              href={getAssetUrl('/menu1.jpeg')}
               target="_blank"
               rel="noreferrer"
               className="hover:text-amber-400 transition-colors"
@@ -91,7 +92,7 @@ export const ApkModal: React.FC<ApkModalProps> = ({ isOpen, onClose, lang }) => 
             </a>
             <span>•</span>
             <a
-              href="/menu2.jpeg"
+              href={getAssetUrl('/menu2.jpeg')}
               target="_blank"
               rel="noreferrer"
               className="hover:text-amber-400 transition-colors"
@@ -100,7 +101,7 @@ export const ApkModal: React.FC<ApkModalProps> = ({ isOpen, onClose, lang }) => 
             </a>
             <span>•</span>
             <a
-              href="/menu3.jpeg"
+              href={getAssetUrl('/menu3.jpeg')}
               target="_blank"
               rel="noreferrer"
               className="hover:text-amber-400 transition-colors"

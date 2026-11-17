@@ -6,6 +6,7 @@ import Link from 'next/link';
 import { Phone, MapPin, Clock, ShieldCheck, Lock, Instagram } from 'lucide-react';
 import { BusinessConfig } from '@/types';
 import { Language, translations } from '@/lib/i18n';
+import { getAssetUrl } from '@/lib/assets';
 
 interface FooterProps {
   config: BusinessConfig;
@@ -24,7 +25,7 @@ export const Footer: React.FC<FooterProps> = ({ config, lang }) => {
             <div className="flex items-center gap-3">
               <div className="relative w-11 h-11 rounded-full overflow-hidden border border-[#363c4a] bg-black">
                 <Image
-                  src={config.logo || '/logo.jpeg'}
+                  src={getAssetUrl(config.logo || '/logo.jpeg')}
                   alt={config.name}
                   fill
                   className="object-cover"

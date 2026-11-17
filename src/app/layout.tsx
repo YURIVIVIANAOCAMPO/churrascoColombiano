@@ -35,7 +35,7 @@ export async function generateMetadata(): Promise<Metadata> {
       siteName: config.name,
       images: [
         {
-          url: '/logo.jpeg',
+          url: '/churrascoColombiano/logo.jpeg',
           width: 800,
           height: 800,
           alt: config.name,
@@ -48,11 +48,11 @@ export async function generateMetadata(): Promise<Metadata> {
       card: 'summary_large_image',
       title: seo.metaTitle,
       description: seo.metaDescription,
-      images: ['/logo.jpeg'],
+      images: ['/churrascoColombiano/logo.jpeg'],
     },
     icons: {
-      icon: '/logo.jpeg',
-      apple: '/logo.jpeg',
+      icon: '/churrascoColombiano/logo.jpeg',
+      apple: '/churrascoColombiano/logo.jpeg',
     },
     robots: {
       index: true,

@@ -5,6 +5,7 @@ import Image from 'next/image';
 import { Flame, MessageCircle, Utensils, Clock, ShieldCheck, Award, Smartphone, ExternalLink } from 'lucide-react';
 import { BusinessConfig, PromoBanner } from '@/types';
 import { Language, translations } from '@/lib/i18n';
+import { getAssetUrl } from '@/lib/assets';
 
 interface HeroBannerProps {
   config: BusinessConfig;
@@ -108,7 +109,7 @@ export const HeroBanner: React.FC<HeroBannerProps> = ({
                 <ExternalLink className="w-3 h-3" />
               </button>
               <a
-                href="/menu1.jpeg"
+                href={getAssetUrl('/menu1.jpeg')}
                 target="_blank"
                 rel="noreferrer"
                 className="hover:text-amber-400 underline underline-offset-2 flex items-center gap-1 font-medium text-zinc-400 text-[11px]"
@@ -117,7 +118,7 @@ export const HeroBanner: React.FC<HeroBannerProps> = ({
               </a>
               <span className="text-zinc-600">•</span>
               <a
-                href="/menu2.jpeg"
+                href={getAssetUrl('/menu2.jpeg')}
                 target="_blank"
                 rel="noreferrer"
                 className="hover:text-amber-400 underline underline-offset-2 flex items-center gap-1 font-medium text-zinc-400 text-[11px]"
@@ -126,7 +127,7 @@ export const HeroBanner: React.FC<HeroBannerProps> = ({
               </a>
               <span className="text-zinc-600">•</span>
               <a
-                href="/menu3.jpeg"
+                href={getAssetUrl('/menu3.jpeg')}
                 target="_blank"
                 rel="noreferrer"
                 className="hover:text-amber-400 underline underline-offset-2 flex items-center gap-1 font-medium text-zinc-400 text-[11px]"
@@ -164,7 +165,7 @@ export const HeroBanner: React.FC<HeroBannerProps> = ({
             <div className="relative w-56 h-56 sm:w-72 sm:h-72 rounded-2xl overflow-hidden border border-[#2a2e38] bg-[#16181d] p-3 flex flex-col items-center justify-center shadow-lg">
               <div className="relative w-full h-full">
                 <Image
-                  src={config.logo || '/logo.jpeg'}
+                  src={getAssetUrl(config.logo || '/logo.jpeg')}
                   alt={config.name}
                   fill
                   className="object-contain"
@@ -214,7 +215,7 @@ export const HeroBanner: React.FC<HeroBannerProps> = ({
               >
                 <div className="relative w-full sm:w-44 h-32 sm:h-full bg-[#121418] flex-shrink-0">
                   <Image
-                    src={p.image}
+                    src={getAssetUrl(p.image)}
                     alt={p.title}
                     fill
                     className="object-cover"

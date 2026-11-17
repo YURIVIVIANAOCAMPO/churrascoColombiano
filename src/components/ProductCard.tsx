@@ -5,6 +5,7 @@ import Image from 'next/image';
 import { Plus, Flame, Award } from 'lucide-react';
 import { Product, BusinessConfig } from '@/types';
 import { Language, translations } from '@/lib/i18n';
+import { getAssetUrl } from '@/lib/assets';
 
 interface ProductCardProps {
   product: Product;
@@ -31,7 +32,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({
       <div className="relative h-44 sm:h-48 w-full overflow-hidden bg-[#121418]">
         {!imgError && product.image ? (
           <Image
-            src={product.image}
+            src={getAssetUrl(product.image)}
             alt={product.name}
             fill
             sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"

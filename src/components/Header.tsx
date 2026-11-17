@@ -6,6 +6,7 @@ import Link from 'next/link';
 import { Search, ShoppingBag, Phone, ShieldCheck, Flame, Smartphone, Download, ExternalLink } from 'lucide-react';
 import { BusinessConfig } from '@/types';
 import { Language, translations } from '@/lib/i18n';
+import { getAssetUrl } from '@/lib/assets';
 
 interface HeaderProps {
   config: BusinessConfig;
@@ -71,7 +72,7 @@ export const Header: React.FC<HeaderProps> = ({
           <Link href="/" className="flex items-center gap-2 sm:gap-3 group min-w-0 flex-1 sm:flex-initial">
             <div className="relative w-9 h-9 sm:w-11 sm:h-11 rounded-full overflow-hidden border border-amber-600/60 shadow-md flex-shrink-0 bg-black">
               <Image
-                src={config.logo || '/logo.jpeg'}
+                src={getAssetUrl(config.logo || '/logo.jpeg')}
                 alt={config.name}
                 fill
                 className="object-cover"
