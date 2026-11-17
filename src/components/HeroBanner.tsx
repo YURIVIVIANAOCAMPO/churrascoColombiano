@@ -85,6 +85,16 @@ export const HeroBanner: React.FC<HeroBannerProps> = ({
                 <Utensils className="w-4 h-4 text-amber-500" />
                 <span>{t.viewMenu}</span>
               </a>
+
+              <a
+                href="https://pedido.zesto.menu/pt-BR/store/churrasco-colombia/xulufimrsmrkvjmvk"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 bg-[#16181d] hover:bg-[#1f2229] border border-[#2a2e38] text-zinc-300 font-bold px-4 sm:px-5 py-2.5 sm:py-3 rounded-lg text-xs sm:text-sm transition-colors"
+              >
+                <ExternalLink className="w-4 h-4 text-amber-500" />
+                <span>Zesto Menu</span>
+              </a>
             </div>
 
             {/* Original leaflets quick link */}

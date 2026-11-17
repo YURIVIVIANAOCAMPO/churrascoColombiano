@@ -3,7 +3,7 @@
 import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { Search, ShoppingBag, Phone, ShieldCheck, Flame, Smartphone, Download } from 'lucide-react';
+import { Search, ShoppingBag, Phone, ShieldCheck, Flame, Smartphone, Download, ExternalLink } from 'lucide-react';
 import { BusinessConfig } from '@/types';
 import { Language, translations } from '@/lib/i18n';
 
@@ -125,6 +125,18 @@ export const Header: React.FC<HeaderProps> = ({
               <Smartphone className="w-3.5 h-3.5" />
               <span className="hidden sm:inline">App APK</span>
             </button>
+
+            {/* Zesto Menu Direct Link */}
+            <a
+              href="https://pedido.zesto.menu/pt-BR/store/churrasco-colombia/xulufimrsmrkvjmvk"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hidden md:flex items-center gap-1.5 bg-[#181a20] hover:bg-[#20232a] border border-[#2b303c] text-zinc-300 hover:text-white px-2.5 py-1.5 sm:py-2 rounded-lg text-xs font-semibold transition-colors"
+              title="Acessar Zesto Menu Online"
+            >
+              <ExternalLink className="w-3.5 h-3.5 text-amber-500" />
+              <span>Zesto Menu</span>
+            </a>
 
             {/* Segmented Language Switcher */}
             <div className="flex items-center bg-[#16181d] rounded-lg p-0.5 border border-[#2a2e38]">
