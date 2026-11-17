@@ -37,20 +37,17 @@ export default function AdminPage() {
   const [newCategoryName, setNewCategoryName] = useState('');
 
   useEffect(() => {
-    async function fetchStore() {
-      try {
-        const res = await fetch('/api/data', { cache: 'no-store' });
-        if (res.ok) {
-          const data = await res.json();
-          if (data && data.config) {
-            setStore(data);
-          }
+    try {
+      const localStore = localStorage.getItem('churrasco_store_override');
+      if (localStore) {
+        const parsed = JSON.parse(localStore);
+        if (parsed && parsed.config) {
+          setStore(parsed);
         }
-      } catch (e) {
-        console.error('Admin data load failed:', e);
       }
+    } catch (e) {
+      console.error('Failed to load local store:', e);
     }
-    fetchStore();
 
     try {
       const savedLang = localStorage.getItem('churrasco_lang') as Language;
@@ -67,21 +64,13 @@ export default function AdminPage() {
     const payload = overrideData || store;
 
     try {
-      const res = await fetch('/api/data', {
-        method: 'PUT',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(payload),
-      });
-
-      if (res.ok) {
-        setSaveMessage(t.changesSaved);
-        setTimeout(() => setSaveMessage(null), 3000);
-      } else {
-        alert('Error al guardar datos.');
-      }
+      localStorage.setItem('churrasco_store_override', JSON.stringify(payload));
+      setStore(payload);
+      setSaveMessage(t.changesSaved);
+      setTimeout(() => setSaveMessage(null), 3000);
     } catch (e) {
       console.error('Error saving data:', e);
-      alert('Error de conexión.');
+      alert('Error al guardar datos.');
     } finally {
       setIsSaving(false);
     }

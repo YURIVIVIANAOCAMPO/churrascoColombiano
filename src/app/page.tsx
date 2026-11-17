@@ -28,25 +28,21 @@ export default function HomePage() {
   const [isMenusModalOpen, setIsMenusModalOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
 
-  // Load latest data from /api/data and cart from localStorage
+  // Load latest data from localStorage or fallback
   useEffect(() => {
-    async function loadData() {
-      try {
-        const res = await fetch('/api/data', { cache: 'no-store' });
-        if (res.ok) {
-          const data = await res.json();
-          if (data && data.config) {
-            setStore(data);
-          }
+    try {
+      const localStore = localStorage.getItem('churrasco_store_override');
+      if (localStore) {
+        const parsed = JSON.parse(localStore);
+        if (parsed && parsed.config) {
+          setStore(parsed);
         }
-      } catch (e) {
-        console.error('Failed to load live data, using fallback:', e);
-      } finally {
-        setIsLoading(false);
       }
+    } catch (e) {
+      console.error('Failed to load local store:', e);
+    } finally {
+      setIsLoading(false);
     }
-
-    loadData();
 
     try {
       const savedCart = localStorage.getItem('churrasco_cart');
