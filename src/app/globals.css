@@ -1,0 +1,55 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 244, 244, 245;
+  --background-rgb: 14, 16, 19;
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background-color: #0e1013;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Minimalist Dark Scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #111317;
+}
+::-webkit-scrollbar-thumb {
+  background: #2a2e38;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #3f4553;
+}
+
+/* Subtle Colombian Accent Bar */
+.colombian-bar {
+  background: linear-gradient(
+    90deg,
+    #FCD116 0%,
+    #FCD116 50%,
+    #003893 50%,
+    #003893 75%,
+    #CE1126 75%,
+    #CE1126 100%
+  );
+  height: 3px;
+}
+
+/* Utility to hide scrollbar */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
